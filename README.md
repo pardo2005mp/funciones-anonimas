@@ -188,3 +188,259 @@ List(60, 80)
 ### Resumen
 
 Las funciones anónimas permiten escribir operaciones de manera breve y clara. Son especialmente útiles para transformar, filtrar y procesar listas sin declarar una función nombrada para cada operación.
+
+# Parte 3. Aplicación práctica de funciones anónimas
+
+Para facilitar las comparaciones, se usa **la misma lista de diez precios** en
+Scala, Java y Python: `25, 15, 180, 750, 45, 80, 150, 65, 120, 95`.
+Los precios representan productos de una tienda de tecnología. Cada programa
+utiliza una lambda y una operación sobre listas; las salidas deben representar
+el mismo resultado en los tres lenguajes.
+
+### 3.1 Selección — `filter`
+
+**Situación real:** una tienda quiere mostrar los productos que cuestan más de $100.
+
+- [Scala](scala/seleccion.scala): `precios.filter(p => p > 100)`.
+- [Java](java/Seleccion.java): `precios.stream().filter(p -> p > 100).toList()`.
+- [Python](python/seleccion.py): `list(filter(lambda p: p > 100, precios))`.
+
+**Salida comprobable:** `180, 750, 150, 120` (en ese orden).
+
+**Explicación:** la función anónima comprueba si cada precio supera $100.
+`filter` conserva únicamente los precios que cumplen esa condición.
+
+### 3.2 Transformación — `map`
+
+**Situación real:** una tienda añade $10 por envío al precio de cada producto.
+
+- [Scala](scala/transformacion.scala): `precios.map(p => p + 10)`.
+- [Java](java/Transformacion.java): `precios.stream().map(p -> p + 10).toList()`.
+- [Python](python/transformacion.py): `list(map(lambda p: p + 10, precios))`.
+
+**Salida comprobable:** `35, 25, 190, 760, 55, 90, 160, 75, 130, 105`.
+
+**Explicación:** la lambda suma 10 a cada precio; `map` genera una lista
+con los nuevos valores sin cambiar la lista original.
+
+### 3.3 Validación — `exists` y `forall`
+
+**Situación real:** una tienda necesita verificar si tiene algún producto de
+más de $500 y comprobar que ningún precio sea cero o negativo.
+
+- [Scala](scala/validacion.scala): `exists(p => p > 500)` y `forall(p => p > 0)`.
+- [Java](java/Validacion.java): `anyMatch(p -> p > 500)` y `allMatch(p -> p > 0)`.
+- [Python](python/validacion.py): `any(map(lambda p: p > 500, precios))` y `all(map(lambda p: p > 0, precios))`.
+
+**Salida comprobable:** ambas validaciones son verdaderas: hay un precio de
+más de $500 y todos los precios son positivos.
+
+**Explicación:** una lambda verifica si existe al menos un elemento que cumple
+la condición y otra comprueba si todos la cumplen.
+
+### 3.4 Conteo — `count`
+
+**Situación real:** la tienda necesita saber cuántos productos cuestan más de $100.
+
+- [Scala](scala/conteo.scala): `precios.count(p => p > 100)`.
+- [Java](java/Conteo.java): `precios.stream().filter(p -> p > 100).count()`.
+- [Python](python/conteo.py): `len(list(filter(lambda p: p > 100, precios)))`.
+
+**Salida comprobable:** `Productos mayores a $100: 4`.
+
+**Explicación:** la lambda comprueba qué precios son mayores a $100 y la
+operación correspondiente permite contar los que cumplen la condición.
+
+**Comparación de salidas:** Scala imprime listas como `List(...)`; Java y Python
+como `[...]`. En las validaciones Python usa `True` y Scala/Java `true`.
+Aunque la escritura cambia, **los resultados son equivalentes**.
+
+---
+
+## Parte 4. Cuatro operaciones nuevas sobre colecciones
+
+Estas operaciones no son las mismas que `map`, `filter`, `exists`, `forall`,
+`count`, `maxBy`, `minBy`, `flatMap`, `foldLeft` o `scanLeft`, vistas en clase.
+Se usa la lista de precios de la Parte 3.
+
+### 4.1 `sortBy` — ordenar
+
+- **Qué hace:** ordena los precios usando el valor que devuelve la lambda.
+- **Qué recibe:** una función `p => p` que devuelve un número como criterio de orden.
+- **Problema real:** mostrar los precios de menor a mayor. Es un tipo de problema de **ordenamiento**.
+- **Código:** [ordenar.scala](operaciones/ordenar.scala).
+- **Salida:** `List(15, 25, 45, 65, 80, 95, 120, 150, 180, 750)`.
+
+### 4.2 `partition` — dividir una lista
+
+- **Qué hace:** separa una lista en dos grupos según una condición.
+- **Qué recibe:** una lambda `p => p <= 100`, que devuelve `Boolean` (`true` o `false`).
+- **Problema real:** dividir productos económicos de los de mayor precio. Se parece a la **selección**, pero conserva ambos grupos.
+- **Código:** [dividir.scala](operaciones/dividir.scala).
+- **Salidas:**
+  - Hasta $100: `List(25, 15, 45, 80, 65, 95)`.
+  - Mayores a $100: `List(180, 750, 150, 120)`.
+
+### 4.3 `find` — buscar
+
+- **Qué hace:** encuentra el primer elemento que cumple la condición.
+- **Qué recibe:** una lambda `p => p > 500`, que devuelve `Boolean`.
+- **Problema real:** localizar un producto de precio superior a $500. Se parece a la **selección**, pero devuelve solo la primera coincidencia.
+- **Código:** [buscar.scala](operaciones/buscar.scala).
+- **Salida:** `Some(750)`, que significa que encontró el precio 750. Si no encontrara nada, devolvería `None`.
+
+### 4.4 `takeWhile` — tomar elementos mientras se cumpla una condición
+
+- **Qué hace:** toma elementos **desde el principio** de la lista y se detiene cuando uno no cumple la condición.
+- **Qué recibe:** una lambda `p => p < 100`, que devuelve `Boolean`.
+- **Problema real:** consultar el bloque inicial de precios menores a $100 en una lista recibida en cierto orden. Es un tipo de **selección por prefijo**.
+- **Código:** [tomar_mientras.scala](operaciones/tomar_mientras.scala).
+- **Salida:** `List(25, 15)`.
+- **Importante:** `takeWhile` no es lo mismo que `filter`; se detiene al encontrar 180.
+
+### 4.5 Combinación de operaciones
+
+**Pregunta:** ¿qué precios de la tienda están entre $20 y $80, ordenados de menor a mayor?
+
+**Código:** [combinacion.scala](operaciones/combinacion.scala).
+
+```scala
+val resultado = precios
+  .filter(p => p >= 20)
+  .sortBy(p => p)
+  .takeWhile(p => p <= 80)
+```
+
+1. `filter` (vista en clase) elimina los precios menores a $20.
+2. `sortBy` (nueva) ordena de menor a mayor.
+3. `takeWhile` (nueva) toma los precios desde el inicio hasta superar $80.
+
+**Salida:** `List(25, 45, 65, 80)`.   
+
+## Parte 3. Aplicación práctica de funciones anónimas
+
+Para facilitar las comparaciones, se usa **la misma lista de diez precios** en
+Scala, Java y Python: `25, 15, 180, 750, 45, 80, 150, 65, 120, 95`.
+Los precios representan productos de una tienda de tecnología. Cada programa
+utiliza una lambda y una operación sobre listas; las salidas deben representar
+el mismo resultado en los tres lenguajes.
+
+### 3.1 Selección — `filter`
+
+**Situación real:** una tienda quiere mostrar los productos que cuestan más de $100.
+
+- [Scala](scala/seleccion.scala): `precios.filter(p => p > 100)`.
+- [Java](java/Seleccion.java): `precios.stream().filter(p -> p > 100).toList()`.
+- [Python](python/seleccion.py): `list(filter(lambda p: p > 100, precios))`.
+
+**Salida comprobable:** `180, 750, 150, 120` (en ese orden).
+
+**Explicación:** la función anónima comprueba si cada precio supera $100.
+`filter` conserva únicamente los precios que cumplen esa condición.
+
+### 3.2 Transformación — `map`
+
+**Situación real:** una tienda añade $10 por envío al precio de cada producto.
+
+- [Scala](scala/transformacion.scala): `precios.map(p => p + 10)`.
+- [Java](java/Transformacion.java): `precios.stream().map(p -> p + 10).toList()`.
+- [Python](python/transformacion.py): `list(map(lambda p: p + 10, precios))`.
+
+**Salida comprobable:** `35, 25, 190, 760, 55, 90, 160, 75, 130, 105`.
+
+**Explicación:** la lambda suma 10 a cada precio; `map` genera una lista
+con los nuevos valores sin cambiar la lista original.
+
+### 3.3 Validación — `exists` y `forall`
+
+**Situación real:** una tienda necesita verificar si tiene algún producto de
+más de $500 y comprobar que ningún precio sea cero o negativo.
+
+- [Scala](scala/validacion.scala): `exists(p => p > 500)` y `forall(p => p > 0)`.
+- [Java](java/Validacion.java): `anyMatch(p -> p > 500)` y `allMatch(p -> p > 0)`.
+- [Python](python/validacion.py): `any(map(lambda p: p > 500, precios))` y `all(map(lambda p: p > 0, precios))`.
+
+**Salida comprobable:** ambas validaciones son verdaderas: hay un precio de
+más de $500 y todos los precios son positivos.
+
+**Explicación:** una lambda verifica si existe al menos un elemento que cumple
+la condición y otra comprueba si todos la cumplen.
+
+### 3.4 Conteo — `count`
+
+**Situación real:** la tienda necesita saber cuántos productos cuestan más de $100.
+
+- [Scala](scala/conteo.scala): `precios.count(p => p > 100)`.
+- [Java](java/Conteo.java): `precios.stream().filter(p -> p > 100).count()`.
+- [Python](python/conteo.py): `len(list(filter(lambda p: p > 100, precios)))`.
+
+**Salida comprobable:** `Productos mayores a $100: 4`.
+
+**Explicación:** la lambda comprueba qué precios son mayores a $100 y la
+operación correspondiente permite contar los que cumplen la condición.
+
+**Comparación de salidas:** Scala imprime listas como `List(...)`; Java y Python
+como `[...]`. En las validaciones Python usa `True` y Scala/Java `true`.
+Aunque la escritura cambia, **los resultados son equivalentes**.
+
+---
+
+## Parte 4. Cuatro operaciones nuevas sobre colecciones
+
+Estas operaciones no son las mismas que `map`, `filter`, `exists`, `forall`,
+`count`, `maxBy`, `minBy`, `flatMap`, `foldLeft` o `scanLeft`, vistas en clase.
+Se usa la lista de precios de la Parte 3.
+
+### 4.1 `sortBy` — ordenar
+
+- **Qué hace:** ordena los precios usando el valor que devuelve la lambda.
+- **Qué recibe:** una función `p => p` que devuelve un número como criterio de orden.
+- **Problema real:** mostrar los precios de menor a mayor. Es un tipo de problema de **ordenamiento**.
+- **Código:** [ordenar.scala](operaciones/ordenar.scala).
+- **Salida:** `List(15, 25, 45, 65, 80, 95, 120, 150, 180, 750)`.
+
+### 4.2 `partition` — dividir una lista
+
+- **Qué hace:** separa una lista en dos grupos según una condición.
+- **Qué recibe:** una lambda `p => p <= 100`, que devuelve `Boolean` (`true` o `false`).
+- **Problema real:** dividir productos económicos de los de mayor precio. Se parece a la **selección**, pero conserva ambos grupos.
+- **Código:** [dividir.scala](operaciones/dividir.scala).
+- **Salidas:**
+  - Hasta $100: `List(25, 15, 45, 80, 65, 95)`.
+  - Mayores a $100: `List(180, 750, 150, 120)`.
+
+### 4.3 `find` — buscar
+
+- **Qué hace:** encuentra el primer elemento que cumple la condición.
+- **Qué recibe:** una lambda `p => p > 500`, que devuelve `Boolean`.
+- **Problema real:** localizar un producto de precio superior a $500. Se parece a la **selección**, pero devuelve solo la primera coincidencia.
+- **Código:** [buscar.scala](operaciones/buscar.scala).
+- **Salida:** `Some(750)`, que significa que encontró el precio 750. Si no encontrara nada, devolvería `None`.
+
+### 4.4 `takeWhile` — tomar elementos mientras se cumpla una condición
+
+- **Qué hace:** toma elementos **desde el principio** de la lista y se detiene cuando uno no cumple la condición.
+- **Qué recibe:** una lambda `p => p < 100`, que devuelve `Boolean`.
+- **Problema real:** consultar el bloque inicial de precios menores a $100 en una lista recibida en cierto orden. Es un tipo de **selección por prefijo**.
+- **Código:** [tomar_mientras.scala](operaciones/tomar_mientras.scala).
+- **Salida:** `List(25, 15)`.
+- **Importante:** `takeWhile` no es lo mismo que `filter`; se detiene al encontrar 180.
+
+### 4.5 Combinación de operaciones
+
+**Pregunta:** ¿qué precios de la tienda están entre $20 y $80, ordenados de menor a mayor?
+
+**Código:** [combinacion.scala](operaciones/combinacion.scala).
+
+```scala
+val resultado = precios
+  .filter(p => p >= 20)
+  .sortBy(p => p)
+  .takeWhile(p => p <= 80)
+```
+
+1. `filter` (vista en clase) elimina los precios menores a $20.
+2. `sortBy` (nueva) ordena de menor a mayor.
+3. `takeWhile` (nueva) toma los precios desde el inicio hasta superar $80.
+
+**Salida:** `List(25, 45, 65, 80)`.
