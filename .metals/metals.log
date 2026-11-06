@@ -1,0 +1,69 @@
+2026.11.06 04:32:38 WARN  Using H2 2.5.250 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.11.06 04:32:38 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/combinacion.scala. Using presentation compiler with project's scala-library version: 3.3.8
+2026.11.06 04:32:40 INFO  Running List(/usr/local/bin/scala-cli, setup-ide, /workspaces/funciones-anonimas)
+2026.11.06 04:32:41 INFO  Attempting to connect to the build server...
+2026.11.06 04:32:41 INFO  Running BSP server List(/usr/local/bin/scala-cli, bsp, --json-options, /workspaces/funciones-anonimas/.scala-build/ide-options-v2.json, --json-launcher-options, /workspaces/funciones-anonimas/.scala-build/ide-launcher-options.json, --envs-file, /workspaces/funciones-anonimas/.scala-build/ide-envs.json, /workspaces/funciones-anonimas)
+2026.11.06 04:32:41 INFO  Tracing is disabled for protocol BSP. To enable tracing of incoming and outgoing JSON messages, create an empty file at /workspaces/funciones-anonimas/.metals/bsp.trace.json or /home/codespace/.cache/metals/bsp.trace.json
+2026.11.06 04:32:43 INFO  BSP server: Downloading https://repo1.maven.org/maven2/org/scala-lang/scala-library/3.9.0/scala-library-3.9.0-sources.jar
+2026.11.06 04:32:43 INFO  BSP server: Downloading https://repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.9.0/scala3-library_3-3.9.0-sources.jar
+2026.11.06 04:32:43 INFO  BSP server: Downloaded https://repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.9.0/scala3-library_3-3.9.0-sources.jar
+2026.11.06 04:32:43 INFO  BSP server: Downloaded https://repo1.maven.org/maven2/org/scala-lang/scala-library/3.9.0/scala-library-3.9.0-sources.jar
+2026.11.06 04:32:43 WARN  no build target for: /workspaces/funciones-anonimas/Operaciones/combinacion.scala
+Nov 06, 2026 4:32:44 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 6
+2026.11.06 04:32:45 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/combinacion.scala. Using presentation compiler with project's scala-library version: 3.3.8
+2026.11.06 04:32:45 INFO  time: Connected to build server in 4.07s
+2026.11.06 04:32:45 INFO  Connected to Build server: scala-cli v1.18.0
+Nov 06, 2026 4:32:45 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 10
+Nov 06, 2026 4:32:45 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 7
+2026.11.06 04:32:45 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/dividir.scala. Using presentation compiler with project's scala-library version: 3.3.8
+2026.11.06 04:32:45 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/combinacion.scala. Using presentation compiler with project's scala-library version: 3.3.8
+2026.11.06 04:32:45 INFO  time: Imported build in 0.55s
+Nov 06, 2026 4:32:45 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 14
+2026.11.06 04:32:45 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/dividir.scala. Using presentation compiler with project's scala-library version: 3.9.0
+2026.11.06 04:32:45 INFO  no build target found for /workspaces/funciones-anonimas/Operaciones/dividir.scala. Using presentation compiler with project's scala-library version: 3.9.0
+2026.11.06 04:32:46 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+Nov 06, 2026 4:32:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 17
+Nov 06, 2026 4:32:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 15
+Nov 06, 2026 4:32:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 22
+Nov 06, 2026 4:32:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 24
+Nov 06, 2026 4:32:48 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 29
+Nov 06, 2026 4:32:49 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 32
+Nov 06, 2026 4:32:49 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 31
+Nov 06, 2026 4:32:49 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 35
+Nov 06, 2026 4:32:49 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 30
+2026.11.06 04:32:50 INFO  time: compiled funciones-anonimas_670799273a in 4.86s
+2026.11.06 04:32:50 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+2026.11.06 04:32:53 INFO  time: compiled funciones-anonimas_670799273a in 2.49s
+2026.11.06 04:32:53 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+2026.11.06 04:32:55 INFO  time: compiled funciones-anonimas_670799273a in 1.57s
+Nov 06, 2026 4:32:55 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 47
+2026.11.06 04:32:57 WARN  Using H2 2.5.250 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.11.06 04:33:18 INFO  time: indexed workspace in 32s
+2026.11.06 04:33:18 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+2026.11.06 04:33:18 INFO  time: compiled funciones-anonimas_670799273a in 0.94s
+2026.11.06 04:37:34 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+2026.11.06 04:37:34 INFO  Deduplicating compilation of funciones-anonimas_670799273a from bsp client 'scala-cli 1.18.0' (since 4m 52.513s)
+2026.11.06 04:37:34 INFO  compiling funciones-anonimas_670799273a (9 scala sources and 4 java sources)
+2026.11.06 04:37:38 WARN  Unexpected javac output: WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.sourcegraph.shaded.com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/home/codespace/.cache/coursier/v1/https/repo1.maven.org/maven2/com/sourcegraph/semanticdb-javac/0.12.3/semanticdb-javac-0.12.3.jar)
+WARNING: Please consider reporting this to the maintainers of class com.sourcegraph.shaded.com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release.
+2026.11.06 04:37:38 WARN  Unexpected javac output: WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::arrayBaseOffset has been called by com.sourcegraph.shaded.com.google.protobuf.UnsafeUtil$MemoryAccessor (file:/home/codespace/.cache/coursier/v1/https/repo1.maven.org/maven2/com/sourcegraph/semanticdb-javac/0.12.3/semanticdb-javac-0.12.3.jar)
+WARNING: Please consider reporting this to the maintainers of class com.sourcegraph.shaded.com.google.protobuf.UnsafeUtil$MemoryAccessor
+WARNING: sun.misc.Unsafe::arrayBaseOffset will be removed in a future release.
+2026.11.06 04:37:38 INFO  time: compiled funciones-anonimas_670799273a in 4.35s

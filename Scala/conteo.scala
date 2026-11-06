@@ -1,4 +1,4 @@
-object Conteo {
+object ConteoScala {
   def main(args: Array[String]): Unit = {
     // Cuenta cuántos productos tienen un precio mayor a $100.
     val precios = List(25, 15, 180, 750, 45, 80, 150, 65, 120, 95)

@@ -1,0 +1,20 @@
+{
+  "name": "scala-cli",
+  "argv": [
+    "/usr/local/bin/scala-cli",
+    "bsp",
+    "--json-options",
+    "/workspaces/funciones-anonimas/.scala-build/ide-options-v2.json",
+    "--json-launcher-options",
+    "/workspaces/funciones-anonimas/.scala-build/ide-launcher-options.json",
+    "--envs-file",
+    "/workspaces/funciones-anonimas/.scala-build/ide-envs.json",
+    "/workspaces/funciones-anonimas"
+  ],
+  "version": "1.18.0",
+  "bspVersion": "2.1.1",
+  "languages": [
+    "scala",
+    "java"
+  ]
+}
